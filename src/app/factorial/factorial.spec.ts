@@ -30,6 +30,6 @@ describe("Tests for the factorial function", () => {
     result = factorialIterativo(10);
 
     // Assert
-    expect(result).toBeCloseTo(3628800);
+    expect(result).toBe(3628800);
   });
 });
