@@ -1,18 +1,17 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { UiComponent } from './ui.component';
-import { FormsModule } from '@angular/forms';
-import { By } from '@angular/platform-browser';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { UiComponent } from "./ui.component";
+import { FormsModule } from "@angular/forms";
+import { By } from "@angular/platform-browser";
 
-describe('Ui Addition - Component', () => {
+describe("Ui Addition - Component", () => {
   let component: UiComponent;
   let fixture: ComponentFixture<UiComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UiComponent ],
+      declarations: [UiComponent],
       imports: [FormsModule],
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -21,83 +20,215 @@ describe('Ui Addition - Component', () => {
     fixture.detectChanges();
   });
 
-  it('Should call addition method', () => {
-     // Arrange
-     let result = 0;
-     component.operator1 = 2;
-     component.operator2 = 2;
- 
-     // Act
-     component.addition();
-     result = component.result;
- 
-     // Assert
-     expect(result).toBe(4);
-  });
-
-
-
-  it('Should set operator1 model through ngModel', async() => {
-    // Arrange 
-    await fixture.whenStable();
-    fixture.detectChanges();
-    const inputElement = fixture.debugElement.query(By.css('input[name="operator1"]')).nativeElement;
-
-    // Act 
-    inputElement.value = '3.1416';
-    inputElement.dispatchEvent(new Event('input'));
-    fixture.detectChanges();
-
-    // Assert 
-    expect(component.operator1).toEqual(3.1416);
-  });
- 
-  it('Should set operator2 model through ngModel', async() => {
-    // Arrange 
-    await fixture.whenStable();
-    fixture.detectChanges();
-    const inputElement = fixture.debugElement.query(By.css('input[name="operator2"]')).nativeElement;
-
-    // Act 
-    inputElement.value = '2.71';
-    inputElement.dispatchEvent(new Event('input'));
-    fixture.detectChanges();
-
-    // Assert 
-    expect(component.operator2).toEqual(2.71);
-  });
-
-
-  it('should add operator1 and operator2 when i click the addition button ', () => {
-    // Arrange 
-    component.operator1 = 5.0;
-    component.operator2 = 2.5;
-    let additionButton = fixture.debugElement.query(By.css('.addition-button'));
-
-    // Act
-    additionButton.triggerEventHandler('click', null);
-
-    // Assert
-    expect(component.result).toBe(7.5);
-
-   });
-
-  it('Should render sum in result div', () => {
+  // Factorial
+  it("Should call factorial method", () => {
     // Arrange
-    component.operator1 = 5;
-    component.operator2 = 5;
- 
+    let result = 0;
+    component.operando1 = 5;
     // Act
-    component.addition();
-    fixture.detectChanges();
-    
-    let de = fixture.debugElement.query(By.css('.result'));
-    let el : HTMLElement = de.nativeElement;
-
+    component.calcularFactorial();
+    result = component.resultado;
     // Assert
-    expect(el.innerText).toContain('10');
-     
+    expect(result).toBe(120);
   });
 
-});
+  it("Should add operator1 when i click the factorial button ", () => {
+    // Arrange
+    component.operando1 = 5;
 
+    let additionButton = fixture.debugElement.query(
+      By.css(".factorial-button")
+    );
+
+    // Act
+    additionButton.triggerEventHandler("click", null);
+
+    // Assert
+    expect(component.resultado).toBe(120);
+  });
+
+  it("Should render factorial in result div", () => {
+    // Arrange
+    component.operando1 = 5;
+
+    // Act
+    component.calcularFactorial();
+    fixture.detectChanges();
+
+    let de = fixture.debugElement.query(By.css(".resultado"));
+    let el: HTMLElement = de.nativeElement;
+
+    // Assert
+    expect(el.innerText).toContain("120");
+  });
+
+  // Logaritmo
+  it("Should call logaritmonatural method", () => {
+    // Arrange
+    let result = 0;
+    component.operando1 = 10;
+    // Act
+    component.calcularLogaritmoNatural();
+    result = component.resultado;
+    // Assert
+    expect(result).toBe(2.302585092994046);
+  });
+
+  it("Should add operator1 when i click the logaritmo button ", () => {
+    // Arrange
+    component.operando1 = 10;
+
+    let additionButton = fixture.debugElement.query(
+      By.css(".logaritmo-button")
+    );
+
+    // Act
+    additionButton.triggerEventHandler("click", null);
+
+    // Assert
+    expect(component.resultado).toBe(2.302585092994046);
+  });
+
+  it("Should render logaritmo in result div", () => {
+    // Arrange
+    component.operando1 = 10;
+
+    // Act
+    component.calcularLogaritmoNatural();
+    fixture.detectChanges();
+
+    let de = fixture.debugElement.query(By.css(".resultado"));
+    let el: HTMLElement = de.nativeElement;
+
+    // Assert
+    expect(el.innerText).toContain("2.302585092994046");
+  });
+
+  // Logaritmo base 10
+  it("Should call logaritmobase10 method", () => {
+    // Arrange
+    let result = 0;
+    component.operando1 = 10;
+    // Act
+    component.calcularLogaritmoBase10();
+    result = component.resultado;
+    // Assert
+    expect(result).toBe(1);
+  });
+
+  it("Should add operator1 when i click the base button ", () => {
+    // Arrange
+    component.operando1 = 10;
+
+    let additionButton = fixture.debugElement.query(By.css(".base-button"));
+
+    // Act
+    additionButton.triggerEventHandler("click", null);
+
+    // Assert
+    expect(component.resultado).toBe(1);
+  });
+
+  it("Should render logairmobase10 in result div", () => {
+    // Arrange
+    component.operando1 = 10;
+
+    // Act
+    component.calcularLogaritmoBase10();
+    fixture.detectChanges();
+
+    let de = fixture.debugElement.query(By.css(".resultado"));
+    let el: HTMLElement = de.nativeElement;
+
+    // Assert
+    expect(el.innerText).toContain("1");
+  });
+
+  // Porcentaje
+  it("Should call Porcentaje method", () => {
+    // Arrange
+    let result = 0;
+    component.operando1 = 10;
+    component.operando2 = 200;
+    // Act
+    component.calcularPorcentaje();
+    result = component.resultado;
+    // Assert
+    expect(result).toBe(20);
+  });
+
+  it("Should add operator1 when i click the porcentaje button ", () => {
+    // Arrange
+    component.operando1 = 10;
+    component.operando2 = 200;
+
+    let additionButton = fixture.debugElement.query(
+      By.css(".porcentaje-button")
+    );
+
+    // Act
+    additionButton.triggerEventHandler("click", null);
+
+    // Assert
+    expect(component.resultado).toBe(20);
+  });
+
+  it("Should render porcentaje in result div", () => {
+    // Arrange
+    component.operando1 = 10;
+    component.operando2 = 200;
+
+    // Act
+    component.calcularPorcentaje();
+    fixture.detectChanges();
+
+    let de = fixture.debugElement.query(By.css(".resultado"));
+    let el: HTMLElement = de.nativeElement;
+
+    // Assert
+    expect(el.innerText).toContain("20");
+  });
+
+  // raiz
+  it("Should call raiz method", () => {
+    // Arrange
+    let result = 0;
+    component.operando1 = 5;
+    component.operando2 = 200;
+    // Act
+    component.calcularRaiz();
+    result = component.resultado;
+    // Assert
+    expect(result).toBe(1.0080796552194304);
+  });
+
+  it("Should add operator1 when i click the raiz button ", () => {
+    // Arrange
+    component.operando1 = 5;
+    component.operando2 = 200;
+
+    let additionButton = fixture.debugElement.query(By.css(".raiz-button"));
+
+    // Act
+    additionButton.triggerEventHandler("click", null);
+
+    // Assert
+    expect(component.resultado).toBe(1.0080796552194304);
+  });
+
+  it("Should render raiz result in div", () => {
+    // Arrange
+    component.operando1 = 5;
+    component.operando2 = 200;
+
+    // Act
+    component.calcularRaiz();
+    fixture.detectChanges();
+
+    let de = fixture.debugElement.query(By.css(".resultado"));
+    let el: HTMLElement = de.nativeElement;
+
+    // Assert
+    expect(el.innerText).toContain("1.0080796552194304");
+  });
+});
