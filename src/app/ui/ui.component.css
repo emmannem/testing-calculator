@@ -1,36 +1,65 @@
-.calculator {
-    width: 150px;
-    text-align: center;
-    color: #999;
+/* Estilos para el body para hacerlo un contenedor flex */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Altura total de la ventana gráfica */
+  margin: 0; /* Elimina los márgenes predeterminados */
+  background-color: #f0f0f0; /* Color de fondo opcional */
 }
 
-.result {
-    font-size: 3.0em;
-    font-weight: bold;
-    color: red;
-
+/* Estilos para el contenedor de la calculadora */
+.container {
+  max-width: 700px; /* O el ancho que prefieras */
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+  /* Añade cualquier otro estilo que necesites */
 }
 
-.operator1 {
-    font-size: 1.5em;
-    font-weight: bold;
-    color: black;
-
+.button-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.operator2 {
-    font-size: 1.5em;
-    font-weight: bold;
-    color: blue;
-
+button {
+  background-color: #4caf50; /* Verde */
+  border: none;
+  color: white;
+  padding: 8px 16px; /* Ajusta el padding para reducir el tamaño del botón */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px; /* Reduce el tamaño de la fuente para botones más pequeños */
+  margin: 2px; /* Menor margen para reducir el espacio entre botones */
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
 }
 
-.addition-button {
-    cursor: pointer;
-    color: blue;
-}
-.substraction-button {
-    cursor: pointer;
-    color: green;
+button:hover {
+  background-color: #45a049;
 }
 
+input[type="number"] {
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: calc(100% - 24px);
+}
+
+input[type="number"]:focus {
+  border-color: #4caf50;
+  outline: none;
+}
+
+.resultado {
+  margin-top: 25px;
+  padding: 10px;
+  background-color: #e7f4e7;
+  border-left: 6px solid #4caf50;
+  color: #333;
+}
