@@ -11,7 +11,7 @@ describe("Tests for the natural logarithm function", () => {
     expect(result).toBe(0);
   });
 
-  it("should calculate the natural logarithm of 10", () => {
+  it("should calculate the natural logarithm of 10 as 2.3025", () => {
     // Arrange
     let result = 0;
 
@@ -22,7 +22,7 @@ describe("Tests for the natural logarithm function", () => {
     expect(result).toBeCloseTo(2.3025, 2);
   });
 
-  it("should calculate the natural logarithm of 2.5", () => {
+  it("should calculate the natural logarithm of 2.5 as 0.91629", () => {
     // Arrange
     let result = 0;
 
